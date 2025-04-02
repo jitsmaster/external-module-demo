@@ -1,5 +1,4 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ComponentBase } from './ComponentBase';
 import { MainComponentService } from './services/main-component.service';
 import { DynamicComponentService } from './services/dynamic-component.service';
@@ -13,7 +12,7 @@ import { DynamicComponentService } from './services/dynamic-component.service';
 @Component({
 	selector: '[mf-app-root]',
 	standalone: true,
-	imports: [RouterOutlet],
+	imports: [],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.less'
 })

@@ -36,7 +36,7 @@ export class MainComponentService extends ComponentBase {
 		this.topbarButtonRef = this.dynamicComponentService.createComponent(TopbarButtonComponent, container);
 		
 		// Set the app reference
-		this.topbarButtonRef.instance.app = this;
+		this.topbarButtonRef.instance.app = this;    
 		
 		return this.topbarButtonRef;
 	}
@@ -137,6 +137,7 @@ export class MainComponentService extends ComponentBase {
 	
 	/**
 	 * Hides the main component when navigation occurs
+	 * Also destroys the component from panelRef after a short delay
 	 */
 	public hideMainComponent(): void {
 		// Hide the topbar button's panel if it exists
@@ -148,6 +149,21 @@ export class MainComponentService extends ComponentBase {
 		if (this.utilButtonRef?.instance) {
 			this.utilButtonRef.instance.uncurrent();
 		}
+		
+		// 延迟销毁组件，确保UI先隐藏
+		setTimeout(() => {
+			// 销毁microFrontendPanelRef
+			if (this.microFrontendPanelRef) {
+				this.dynamicComponentService.destroyComponent(this.microFrontendPanelRef.instance);
+				this.microFrontendPanelRef = undefined;
+			}
+			
+			// 销毁microFrontendUtilPaneRef
+			if (this.microFrontendUtilPaneRef) {
+				this.dynamicComponentService.destroyComponent(this.microFrontendUtilPaneRef.instance);
+				this.microFrontendUtilPaneRef = undefined;
+			}
+		}, 100); // 短暂延迟以确保UI先隐藏
 	}
 	
 	ngOnDestroy(): void {
