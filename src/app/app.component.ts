@@ -11,7 +11,7 @@ import { DynamicComponentService } from './services/dynamic-component.service';
  * and coordinating their interactions.
  */
 @Component({
-	selector: 'app-root',
+	selector: '[mf-app-root]',
 	standalone: true,
 	imports: [RouterOutlet],
 	templateUrl: './app.component.html',
@@ -106,6 +106,7 @@ export class AppComponent extends ComponentBase implements AfterViewInit, OnDest
 		
 		// Create a container element
 		const container = document.createElement('div');
+        container.classList.add("TopButton")
 		
 		// Insert container after the second button
 		buttons[1].parentNode?.insertBefore(container, buttons[2].nextSibling);

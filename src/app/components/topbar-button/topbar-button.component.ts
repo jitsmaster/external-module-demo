@@ -7,7 +7,13 @@ import { ComponentBase } from '../../ComponentBase';
 	templateUrl: './topbar-button.component.html',
 	styleUrls: ['./topbar-button.component.less'],
 	standalone: true,
-	imports: [CommonModule]
+	imports: [CommonModule],
+    host: {
+		'class': 'TopButton ctnp-topbar-button',
+		'title': 'Micro-Frontend',
+		'matRipple': '',
+		'(click)': 'invoke()'
+	}
 })
 export class TopbarButtonComponent extends ComponentBase implements OnInit, OnDestroy {
 	/** Whether the button is currently active */

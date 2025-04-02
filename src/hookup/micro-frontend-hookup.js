@@ -23,8 +23,8 @@ class MicroFrontendHookup {
     async setup() {
         try {
             const scripts = [
-                "browser/polyfills.js",
-                "browser/main.js"
+                "polyfills.js",
+                "main.js"
             ];
 
             // Get version from server with cache busting
@@ -51,7 +51,7 @@ class MicroFrontendHookup {
 
             const encodedUrl = btoa(window.location.href.split('#')[0]);
 
-            this.iframe.src = `CMS/ExternalModule?root=app-root`
+            this.iframe.src = `CMS/ExternalModule?root=mf-app-root`
                 + `&url=${encodeURIComponent(this._moduleUri)}`
                 + `&refpointerer=${encodeURIComponent(encodedUrl)}`
                 + `&scripts=${encodeURIComponent(scriptsFinal)}`;

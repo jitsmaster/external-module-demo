@@ -40,6 +40,10 @@ export class MainComponentService extends ComponentBase {
 		
 		return this.topbarButtonRef;
 	}
+
+    private getAssignButton() {
+		return (window.top as any).document.body.querySelector("utility-button span.fa-list")?.parentElement as HTMLElement;
+	}
 	
 	/**
 	 * Creates a util button in the toolbar
@@ -49,15 +53,9 @@ export class MainComponentService extends ComponentBase {
 		const topWindow = window.top as any;
 		if (!topWindow) return;
 		
-		// Find the utility bar
-		const utilBar = topWindow.document.querySelector('.util-bar');
-		if (!utilBar) {
-			console.error('[Micro-Frontend] - Util bar not found');
-			return;
-		}
 		
 		// Find a reference button to position next to
-		const assignButton = utilBar.querySelector('.assign-button');
+		const assignButton = this.getAssignButton();
 		if (!assignButton) {
 			console.error('[Micro-Frontend] - Assign button not found');
 			return;
