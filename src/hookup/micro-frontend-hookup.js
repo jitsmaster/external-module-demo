@@ -23,8 +23,8 @@ class MicroFrontendHookup {
     async setup() {
         try {
             const scripts = [
-                "polyfills.js",
-                "main.js"
+                "browser/polyfills.js",
+                "browser/main.js"
             ];
 
             // Get version from server with cache busting
